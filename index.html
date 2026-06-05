@@ -1,372 +1,303 @@
 ﻿<!DOCTYPE html>
-<html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Aryan.Edu | Elite Home Tuition</title>
-<!-- 1. CHECKED: TAILWIND CSS (Direct CDN) -->
-<script src="https://cdn.tailwindcss.com"></script>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aryan Kumar | Tech Enthusiast</title>
+    <!-- TAILWIND CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 
-<!-- 2. CHECKED: FONT AWESOME (Icons) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        neon: {
+                            blue: '#00f3ff',
+                            purple: '#bc13fe',
+                            dark: '#050b14',
+                            card: '#0a192f'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 
-<!-- 3. CHECKED: GOOGLE FONTS (Outfit) -->
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #050b14;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
 
-<style>
-   body {
-       font-family: 'Outfit', sans-serif;
-       background-color: #f0f9ff; /* Very Light Blue */
-       color: #1e293b;
-       overflow-x: hidden;
-   }
+        .glass-nav {
+            background: rgba(5, 11, 20, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+        }
 
-   /* --- THE "BLUE EYES" GLASS UI --- */
-   .hero-bg {
-       background: linear-gradient(135deg, #3b82f6 0%, #0ea5e9 100%);
-       position: relative;
-       overflow: hidden;
-   }
+        .tech-card {
+            background: #0a192f;
+            border: 1px solid rgba(0, 243, 255, 0.1);
+            transition: all 0.3s ease;
+        }
 
-   /* Glassmorphism Cards */
-   .glass {
-       background: rgba(255, 255, 255, 0.7);
-       backdrop-filter: blur(12px);
-       -webkit-backdrop-filter: blur(12px);
-       border: 1px solid rgba(255, 255, 255, 0.6);
-       box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
-   }
+        .tech-card:hover {
+            transform: translateY(-5px);
+            border-color: #00f3ff;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+        }
 
-   /* Floating Particles */
-   .particle {
-       position: absolute;
-       background: rgba(255, 255, 255, 0.2);
-       border-radius: 50%;
-       animation: float 8s infinite ease-in-out;
-   }
-   .p1 { width: 100px; height: 100px; top: 10%; left: 5%; animation-duration: 6s; }
-   .p2 { width: 150px; height: 150px; bottom: 20%; right: 10%; animation-duration: 9s; }
+        .glow-text {
+            color: #00f3ff;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+        }
 
-   @keyframes float {
-       0%, 100% { transform: translateY(0px); }
-       50% { transform: translateY(-20px); }
-   }
+        .glow-text-purple {
+            color: #bc13fe;
+            text-shadow: 0 0 10px rgba(188, 19, 254, 0.5);
+        }
 
-   /* Mobile Menu Slide */
-   #mobileMenu {
-       transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-       transform: translateX(100%);
-   }
-   #mobileMenu.open {
-       transform: translateX(0);
-   }
+        .grid-bg {
+            background-image:
+                linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
 
-   /* Floating WhatsApp */
-   .float-wa {
-       position: fixed; bottom: 30px; right: 30px;
-       width: 60px; height: 60px;
-       background-color: #25d366; color: white;
-       border-radius: 50%; display: flex;
-       align-items: center; justify-content: center;
-       font-size: 30px; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-       z-index: 40; transition: transform 0.2s;
-   }
-   .float-wa:hover { transform: scale(1.1); }
-</style>
+        /* Mobile Menu */
+        #mobileMenu {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(100%);
+        }
+        #mobileMenu.open {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="grid-bg font-sans antialiased selection:bg-neon-blue selection:text-neon-dark">
 
-</head> <body class="bg-slate-50">
-<!-- Navbar -->
-<nav class="fixed w-full z-50 glass border-b border-white/50">
-   <div class="max-w-6xl mx-auto px-5 py-3 flex justify-between items-center">
-       <!-- Logo -->
-       <div class="flex items-center gap-2">
-           <div class="bg-blue-600 text-white p-2 rounded-lg shadow-lg">
-               <i class="fas fa-graduation-cap text-lg"></i>
-           </div>
-           <h1 class="text-2xl font-bold tracking-tight text-slate-800">Aryan<span class="text-blue-500">.Edu</span></h1>
-       </div>
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass-nav">
+        <div class="max-w-6xl mx-auto px-5 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="text-neon-blue text-2xl">
+                    <i class="fas fa-terminal"></i>
+                </div>
+                <h1 class="text-2xl font-bold tracking-tight text-white font-mono">Aryan<span class="text-neon-blue">_</span></h1>
+            </div>
 
-       <!-- Hamburger Button -->
-       <button onclick="toggleMenu()" class="text-slate-700 text-2xl hover:text-blue-600 transition">
-           <i class="fas fa-bars"></i>
-       </button>
-   </div>
-</nav>
+            <div class="hidden md:flex gap-8 text-sm font-mono text-slate-300">
+                <a href="#about" class="hover:text-neon-blue transition">01. About</a>
+                <a href="#skills" class="hover:text-neon-blue transition">02. Skills</a>
+                <a href="#hobbies" class="hover:text-neon-blue transition">03. Hobbies</a>
+                <a href="#contact" class="hover:text-neon-blue transition">04. Contact</a>
+            </div>
 
-<!-- Slide-out Menu -->
-<div id="mobileMenu" class="fixed inset-y-0 right-0 w-72 bg-white/95 backdrop-blur-xl shadow-2xl z-[60] p-6 flex flex-col gap-6 border-l border-white/20">
-   <div class="flex justify-between items-center mb-4">
-       <h3 class="font-bold text-lg text-blue-900">Menu</h3>
-       <button onclick="toggleMenu()" class="text-slate-400 hover:text-red-500"><i class="fas fa-times text-xl"></i></button>
-   </div>
-   <a href="#hero" onclick="toggleMenu()" class="text-slate-700 font-medium hover:text-blue-600 flex items-center gap-3"><i class="fas fa-home w-5 text-blue-400"></i> Home</a>
-   <a href="#subjects" onclick="toggleMenu()" class="text-slate-700 font-medium hover:text-blue-600 flex items-center gap-3"><i class="fas fa-book w-5 text-blue-400"></i> Subjects</a>
-   <a href="#about" onclick="toggleMenu()" class="text-slate-700 font-medium hover:text-blue-600 flex items-center gap-3"><i class="fas fa-user w-5 text-blue-400"></i> About Me</a>
-   <a href="#contact" onclick="toggleMenu()" class="text-slate-700 font-medium hover:text-blue-600 flex items-center gap-3"><i class="fas fa-phone w-5 text-blue-400"></i> Contact</a>
-</div>
+            <button onclick="toggleMenu()" class="md:hidden text-neon-blue text-2xl hover:text-white transition">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
 
-<!-- Hero Section -->
-<header id="hero" class="hero-bg text-white pt-36 pb-24 px-4 text-center rounded-b-[40px] shadow-lg relative">
-   <div class="particle p1"></div>
-   <div class="particle p2"></div>
+    <!-- Slide-out Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-y-0 right-0 w-72 bg-neon-dark/95 backdrop-blur-xl shadow-2xl z-[60] p-6 flex flex-col gap-8 border-l border-neon-blue/20">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="font-bold text-lg text-neon-blue font-mono">Terminal_</h3>
+            <button onclick="toggleMenu()" class="text-slate-400 hover:text-neon-blue"><i class="fas fa-times text-xl"></i></button>
+        </div>
+        <a href="#about" onclick="toggleMenu()" class="text-slate-300 font-mono hover:text-neon-blue flex items-center gap-3"><span class="text-neon-blue">01.</span> About</a>
+        <a href="#skills" onclick="toggleMenu()" class="text-slate-300 font-mono hover:text-neon-blue flex items-center gap-3"><span class="text-neon-blue">02.</span> Skills</a>
+        <a href="#hobbies" onclick="toggleMenu()" class="text-slate-300 font-mono hover:text-neon-blue flex items-center gap-3"><span class="text-neon-blue">03.</span> Hobbies</a>
+        <a href="#contact" onclick="toggleMenu()" class="text-slate-300 font-mono hover:text-neon-blue flex items-center gap-3"><span class="text-neon-blue">04.</span> Contact</a>
+    </div>
 
-   <div class="relative z-10 max-w-3xl mx-auto">
-       <div class="inline-block px-4 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-sm font-semibold mb-6">
-           ✨ Khemnichak's #1 Home Tutor
-       </div>
-       <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight drop-shadow-sm">
-           Learn with <br> <span class="text-sky-200">Logic.</span>
-       </h1>
-       <p class="text-lg md:text-xl text-blue-50 mb-8 max-w-xl mx-auto font-light">
-           Classes Nur to 6 | Science, Maths, SST & Computer.
-           <br>Concept Clarity > Ratta Learning.
-       </p>
-       
-       <button onclick="openModal()" class="bg-white text-blue-600 text-lg font-bold px-8 py-4 rounded-full shadow-xl hover:bg-sky-50 transition transform hover:scale-105 flex items-center justify-center gap-3 mx-auto">
-           <i class="fas fa-calendar-check text-xl"></i> Book Demo Class
-       </button>
-   </div>
-</header>
+    <!-- Hero Section -->
+    <header class="min-h-screen flex items-center justify-center pt-20 px-4 relative">
+        <div class="max-w-4xl mx-auto w-full z-10 text-left">
+            <p class="font-mono text-neon-blue mb-4">Hi, my name is</p>
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-4 text-white tracking-tight">
+                Aryan Kumar.
+            </h1>
+            <h2 class="text-4xl md:text-6xl font-bold mb-6 text-slate-400">
+                I explore the <span class="glow-text">web</span> & <span class="glow-text-purple">AI</span>.
+            </h2>
+            <p class="text-lg text-slate-400 max-w-2xl mb-10 leading-relaxed">
+                I'm a tech geek who loves to learn and experiment with technology every single day. Always up-to-date, always exploring new features, and mastering tools to stay ahead of the curve.
+            </p>
 
-<!-- Stats Section -->
-<section class="py-12 px-4">
-   <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-       <div class="glass p-5 rounded-2xl hover:-translate-y-1 transition duration-300">
-           <div class="text-blue-600 font-bold text-xl">B.Sc.</div>
-           <div class="text-xs text-slate-500">Zoology Scholar</div>
-       </div>
-       <div class="glass p-5 rounded-2xl hover:-translate-y-1 transition duration-300">
-           <div class="text-emerald-600 font-bold text-xl">Monthly</div>
-           <div class="text-xs text-slate-500">Advance Fees</div>
-       </div>
-       <div class="glass p-5 rounded-2xl hover:-translate-y-1 transition duration-300">
-           <div class="text-sky-600 font-bold text-xl">Logic</div>
-           <div class="text-xs text-slate-500">No Ratta</div>
-       </div>
-       <div class="glass p-5 rounded-2xl hover:-translate-y-1 transition duration-300">
-           <div class="text-orange-500 font-bold text-xl">Demo</div>
-           <div class="text-xs text-slate-500">Free 2 Days</div>
-       </div>
-   </div>
-</section>
+            <div class="flex flex-wrap gap-4">
+                <a href="#contact" class="border border-neon-blue text-neon-blue hover:bg-neon-blue hover:text-neon-dark px-8 py-3 rounded font-mono transition">
+                    Get In Touch
+                </a>
+                <a href="https://www.fiverr.com/s/vvXNNZW" target="_blank" class="border border-neon-purple text-neon-purple hover:bg-neon-purple hover:text-neon-dark px-8 py-3 rounded font-mono transition flex items-center gap-2">
+                    <i class="fas fa-external-link-alt"></i> Fiverr Profile
+                </a>
+            </div>
+        </div>
+    </header>
 
-<!-- Subjects Section -->
-<section id="subjects" class="py-16 px-4">
-   <div class="max-w-6xl mx-auto">
-       <h2 class="text-3xl font-bold text-center mb-10 text-slate-800">My <span class="text-blue-500">Subjects</span></h2>
-       
-       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-           <!-- Science -->
-           <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg hover:border-blue-200 transition group">
-               <h3 class="font-bold text-lg mb-2 flex items-center gap-2 group-hover:text-blue-600 transition"><i class="fas fa-flask text-blue-500"></i> Science</h3>
-               <p class="text-sm text-slate-500">Diagrams & Real-life examples.</p>
-           </div>
-           <!-- Maths -->
-           <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg hover:border-green-200 transition group">
-               <h3 class="font-bold text-lg mb-2 flex items-center gap-2 group-hover:text-green-600 transition"><i class="fas fa-calculator text-green-500"></i> Maths</h3>
-               <p class="text-sm text-slate-500">Step-by-step problem solving.</p>
-           </div>
-           <!-- SST -->
-           <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg hover:border-orange-200 transition group">
-               <h3 class="font-bold text-lg mb-2 flex items-center gap-2 group-hover:text-orange-600 transition"><i class="fas fa-globe text-orange-500"></i> SST</h3>
-               <p class="text-sm text-slate-500">History through Storytelling.</p>
-           </div>
-           <!-- Computer -->
-           <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg hover:border-indigo-200 transition group">
-               <h3 class="font-bold text-lg mb-2 flex items-center gap-2 group-hover:text-indigo-600 transition"><i class="fas fa-laptop text-indigo-500"></i> Computer</h3>
-               <p class="text-sm text-slate-500">Basics & Typing skills.</p>
-           </div>
-           <!-- English -->
-           <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-lg hover:border-pink-200 transition group">
-               <h3 class="font-bold text-lg mb-2 flex items-center gap-2 group-hover:text-pink-600 transition"><i class="fas fa-book-open text-pink-500"></i> English</h3>
-               <p class="text-sm text-slate-500">Grammar & Vocabulary.</p>
-           </div>
-       </div>
-   </div>
-</section>
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex items-center gap-4 mb-10">
+                <h2 class="text-2xl md:text-3xl font-bold text-white font-mono"><span class="text-neon-blue">01.</span> About Me</h2>
+                <div class="h-[1px] bg-slate-700 flex-grow max-w-[300px]"></div>
+            </div>
 
-<!-- Profile Section -->
-<section id="about" class="py-16 px-4">
-   <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8 glass p-8 rounded-3xl">
-       <div class="w-32 h-32 shrink-0">
-           <!-- 4. CHECKED: Image Link -->
-           <img src="https://i.ibb.co/5WP9dMSQ/IMG-20250602-WA0012.jpg" alt="Aryan Sir" class="w-full h-full rounded-full border-4 border-blue-200 object-cover shadow-md">
-       </div>
-       <div class="text-center md:text-left">
-           <h3 class="text-2xl font-bold text-slate-800">Aryan Kumar</h3>
-           <p class="text-blue-500 font-semibold mb-3">Professional Educator</p>
-           <p class="text-slate-500 text-sm leading-relaxed">
-               "Students need logic, not pressure. I ensure every concept is clear so they enjoy learning. Contact me for the best guidance in Khemnichak."
-           </p>
-       </div>
-   </div>
-</section>
+            <div class="flex flex-col md:flex-row gap-12 items-center md:items-start">
+                <div class="w-full md:w-3/5 text-slate-400 leading-relaxed space-y-4">
+                    <p>
+                        Hello! My name is Aryan and I enjoy navigating the ever-evolving world of technology. My journey started with a deep curiosity for how things work on a computer, which quickly evolved into a passion for exploring the web, automating tasks, and diving deep into Artificial Intelligence.
+                    </p>
+                    <p>
+                        I believe in learning by doing. Whether it's testing out the latest AI features, analyzing data, or simply optimizing my daily workflow, I strive to stay on the cutting edge.
+                    </p>
+                    <p>
+                        I'm known for being the "tech geek" among my peers—always the go-to person when it comes to PC troubleshooting, MS Office wizardry, or understanding new software.
+                    </p>
+                </div>
 
-<!-- Contact Footer -->
-<footer id="contact" class="bg-white border-t border-slate-200 py-12 px-4 mt-8">
-   <div class="max-w-4xl mx-auto text-center">
-       <h2 class="text-2xl font-bold mb-8 text-slate-800">Contact Me</h2>
-       
-       <div class="flex flex-wrap justify-center gap-8 md:gap-16 mb-8">
-           <!-- Call -->
-           <a href="tel:7091241322" class="group flex flex-col items-center gap-3">
-               <div class="w-14 h-14 rounded-full bg-green-50 text-green-500 flex items-center justify-center text-2xl group-hover:bg-green-500 group-hover:text-white transition duration-300 shadow-sm border border-green-100">
-                   <i class="fas fa-phone-alt"></i>
-               </div>
-               <span class="text-sm font-medium text-slate-500 group-hover:text-green-600">Call Now</span>
-           </a>
+                <div class="w-full md:w-2/5 relative group">
+                    <div class="absolute -inset-2 bg-neon-blue rounded-xl opacity-20 group-hover:opacity-40 blur transition duration-500"></div>
+                    <div class="relative w-64 h-64 md:w-72 md:h-72 mx-auto overflow-hidden rounded-xl border-2 border-neon-blue/50">
+                        <img src="https://i.ibb.co/5WP9dMSQ/IMG-20250602-WA0012.jpg" alt="Aryan Kumar" class="w-full h-full object-cover transition duration-500 group-hover:scale-105 filter grayscale hover:grayscale-0">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-           <!-- Email -->
-           <a href="mailto:heroaryan.aryan@gmail.com" class="group flex flex-col items-center gap-3">
-               <div class="w-14 h-14 rounded-full bg-red-50 text-red-500 flex items-center justify-center text-2xl group-hover:bg-red-500 group-hover:text-white transition duration-300 shadow-sm border border-red-100">
-                   <i class="fas fa-envelope"></i>
-               </div>
-               <span class="text-sm font-medium text-slate-500 group-hover:text-red-600">Email Me</span>
-           </a>
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-4 bg-neon-card/30">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex items-center gap-4 mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-white font-mono"><span class="text-neon-blue">02.</span> My Arsenal</h2>
+                <div class="h-[1px] bg-slate-700 flex-grow max-w-[300px]"></div>
+            </div>
 
-           <!-- Location -->
-           <div class="flex flex-col items-center gap-3 cursor-default">
-               <div class="w-14 h-14 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center text-2xl shadow-sm border border-blue-100">
-                   <i class="fas fa-map-marker-alt"></i>
-               </div>
-               <span class="text-sm font-medium text-slate-500">Khemnichak</span>
-           </div>
-       </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Python -->
+                <div class="tech-card p-6 rounded-lg flex items-start gap-4">
+                    <div class="text-yellow-400 text-3xl mt-1">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">Python</h3>
+                        <p class="text-slate-400 text-sm">Proficient in writing scripts, automating workflows, and basic data manipulation.</p>
+                    </div>
+                </div>
+                <!-- Data Annotation -->
+                <div class="tech-card p-6 rounded-lg flex items-start gap-4">
+                    <div class="text-emerald-400 text-3xl mt-1">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">Data Annotation</h3>
+                        <p class="text-slate-400 text-sm">Experience at <a href="https://dataannotation.tech" target="_blank" class="text-neon-blue hover:underline">dataannotation.tech</a> training and evaluating AI models.</p>
+                    </div>
+                </div>
+                <!-- MS Office -->
+                <div class="tech-card p-6 rounded-lg flex items-start gap-4">
+                    <div class="text-orange-500 text-3xl mt-1">
+                        <i class="fas fa-file-word"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">MS Office</h3>
+                        <p class="text-slate-400 text-sm">Advanced knowledge of Excel, Word, and PowerPoint for productivity and reporting.</p>
+                    </div>
+                </div>
+                <!-- PC Mastery -->
+                <div class="tech-card p-6 rounded-lg flex items-start gap-4">
+                    <div class="text-neon-blue text-3xl mt-1">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">PC Mastery</h3>
+                        <p class="text-slate-400 text-sm">Hardware troubleshooting, OS optimization, and power-user configurations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-       <p class="text-xs text-slate-400">© 2024 Aryan.Edu</p>
-   </div>
-</footer>
+    <!-- Hobbies Section -->
+    <section id="hobbies" class="py-20 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex items-center gap-4 mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-white font-mono"><span class="text-neon-blue">03.</span> Interests & Hobbies</h2>
+                <div class="h-[1px] bg-slate-700 flex-grow max-w-[300px]"></div>
+            </div>
 
-<!-- Floating WhatsApp -->
-<a href="https://wa.me/917091241322" class="float-wa">
-   <i class="fab fa-whatsapp"></i>
-</a>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="group relative bg-neon-card border border-slate-800 p-8 rounded-xl hover:border-neon-purple transition duration-300">
+                    <div class="text-neon-purple text-4xl mb-4 group-hover:scale-110 transition transform">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">AI Enthusiast</h3>
+                    <p class="text-slate-400">
+                        Obsessed with exploring new AI features. I love testing prompts, finding limits of LLMs, and staying updated with the latest breakthroughs in the AI space.
+                    </p>
+                </div>
 
-<!-- Booking Modal -->
-<div id="bookingModal" class="fixed inset-0 bg-slate-900/60 hidden z-[70] flex items-center justify-center p-4 backdrop-blur-sm">
-   <div class="bg-white w-full max-w-md rounded-2xl p-6 relative animate-[fadeIn_0.3s_ease-out] shadow-2xl max-h-[90vh] overflow-y-auto">
-       
-       <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-red-500">
-           <i class="fas fa-times text-xl"></i>
-       </button>
+                <div class="group relative bg-neon-card border border-slate-800 p-8 rounded-xl hover:border-neon-blue transition duration-300">
+                    <div class="text-neon-blue text-4xl mb-4 group-hover:scale-110 transition transform">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-3">Web Exploring</h3>
+                    <p class="text-slate-400">
+                        Constantly surfing the deep web of open-source projects, tech forums, and cool new web apps. Discovering hidden gems on the internet is a daily routine.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-       <h3 class="text-xl font-bold text-slate-800 mb-1">Book Demo Class</h3>
-       <p class="text-xs text-slate-500 mb-5">Negotiate & book directly on WhatsApp.</p>
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 px-4 text-center">
+        <div class="max-w-2xl mx-auto">
+            <p class="font-mono text-neon-blue mb-4">04. What's Next?</p>
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Get In Touch</h2>
+            <p class="text-slate-400 mb-10 text-lg">
+                Whether you have a question, want to discuss AI, or just want to say hi, my inbox is always open. I'll try my best to get back to you!
+            </p>
 
-       <form onsubmit="event.preventDefault(); sendBooking();">
-           
-           <!-- Class -->
-           <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Class</label>
-           <select id="classSelect" class="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 mb-3 text-sm focus:outline-blue-500 focus:bg-white transition">
-               <option value="" disabled selected>Select Class</option>
-               <option value="Nursery">Nursery</option>
-               <option value="LKG">LKG</option>
-               <option value="UKG">UKG</option>
-               <option value="Class 1">Class 1</option>
-               <option value="Class 2">Class 2</option>
-               <option value="Class 3">Class 3</option>
-               <option value="Class 4">Class 4</option>
-               <option value="Class 5">Class 5</option>
-               <option value="Class 6">Class 6</option>
-           </select>
+            <a href="mailto:Aryankumar.170911@gmail.com" class="inline-block border-2 border-neon-blue text-neon-blue hover:bg-neon-blue hover:text-neon-dark px-10 py-4 rounded-lg font-mono font-bold transition duration-300 shadow-[0_0_15px_rgba(0,243,255,0.3)] hover:shadow-[0_0_25px_rgba(0,243,255,0.6)]">
+                Say Hello <i class="fas fa-paper-plane ml-2"></i>
+            </a>
 
-           <!-- Hours & Price -->
-           <div class="grid grid-cols-2 gap-3 mb-3">
-               <div>
-                   <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Time</label>
-                   <select id="hoursSelect" class="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 text-sm focus:outline-blue-500 focus:bg-white transition">
-                       <option value="1 Hour">1 Hour</option>
-                       <option value="1.5 Hours">1.5 Hours</option>
-                       <option value="2 Hours" selected>2 Hours</option>
-                       <option value="2.5 Hours">2.5 Hours</option>
-                   </select>
-               </div>
-               <div>
-                   <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Offer (₹/Month)</label>
-                   <!-- 5. CHECKED: Placeholder Correct -->
-                   <input type="text" id="priceInput" placeholder="e.g. 2500" class="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 text-sm focus:outline-blue-500 focus:bg-white transition">
-               </div>
-           </div>
+            <div class="mt-12 flex justify-center gap-6">
+                <a href="https://www.fiverr.com/s/vvXNNZW" target="_blank" class="text-slate-400 hover:text-neon-purple text-2xl transition" title="Fiverr Profile">
+                    <i class="fas fa-link"></i>
+                </a>
+                <a href="mailto:Aryankumar.170911@gmail.com" class="text-slate-400 hover:text-neon-blue text-2xl transition" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </section>
 
-           <!-- Contact -->
-           <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Mobile Number</label>
-           <input type="tel" id="contactInput" placeholder="Your Number" class="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 mb-4 text-sm focus:outline-blue-500 focus:bg-white transition" required>
+    <footer class="py-6 text-center text-slate-500 font-mono text-sm border-t border-slate-800">
+        <p>Built with <i class="fas fa-bolt text-yellow-400"></i> by Aryan Kumar</p>
+    </footer>
 
-           <!-- Geolocation -->
-           <div class="mb-4">
-               <button type="button" id="geoBtn" onclick="fetchLocation()" class="w-full border border-dashed border-blue-300 text-blue-600 bg-blue-50 hover:bg-blue-100 font-semibold py-3 rounded-xl transition flex justify-center items-center gap-2 text-sm">
-                   <i class="fas fa-map-marker-alt"></i> <span id="geoText">Attach My Location</span>
-               </button>
-               <input type="hidden" id="locationLink" value="">
-           </div>
-
-           <!-- Submit -->
-           <button type="submit" class="w-full bg-[#25D366] hover:bg-green-600 text-white font-bold py-3 rounded-xl shadow-lg transition flex justify-center items-center gap-2">
-               <i class="fab fa-whatsapp text-lg"></i> Send to WhatsApp
-           </button>
-       </form>
-   </div>
-</div>
-
-<!-- Script Logic -->
-<script>
-   const myPhone = "917091241322";
-
-   // Menu Toggle
-   function toggleMenu() {
-       document.getElementById('mobileMenu').classList.toggle('open');
-   }
-
-   // Modal Controls
-   function openModal() { document.getElementById('bookingModal').classList.remove('hidden'); }
-   function closeModal() { document.getElementById('bookingModal').classList.add('hidden'); }
-   
-   window.onclick = function(e) {
-       if (e.target == document.getElementById('bookingModal')) closeModal();
-   }
-
-   // Location Logic
-   function fetchLocation() {
-       const btnText = document.getElementById('geoText');
-       const btn = document.getElementById('geoBtn');
-       btnText.innerHTML = "Fetching...";
-       
-       if (navigator.geolocation) {
-           navigator.geolocation.getCurrentPosition(
-               (pos) => {
-                   const link = `https://www.google.com/maps?q=${pos.coords.latitude},${pos.coords.longitude}`;
-                   document.getElementById('locationLink').value = link;
-                   btnText.innerHTML = "Location Attached ✅";
-                   btn.className = "w-full border border-green-500 text-green-600 bg-green-50 font-semibold py-3 rounded-xl gap-2 text-sm flex justify-center items-center";
-               },
-               (err) => {
-                   alert("Could not fetch location.");
-                   btnText.innerHTML = "Failed (Share Manually)";
-               }
-           );
-       } else {
-           alert("Not supported.");
-       }
-   }
-
-   // Send Logic
-   function sendBooking() {
-       const cls = document.getElementById('classSelect').value || "NA";
-       const hrs = document.getElementById('hoursSelect').value;
-       const price = document.getElementById('priceInput').value || "Negotiable";
-       const ph = document.getElementById('contactInput').value;
-       const loc = document.getElementById('locationLink').value || "Manual Share";
-
-       let msg = `*Namaste Aryan Sir!* 🙏%0A%0A`;
-       msg += `I want to book a demo class.%0A`;
-       msg += `------------------%0A`;
-       msg += `📚 Class: ${cls}%0A`;
-       msg += `⏰ Time: ${hrs}%0A`;
-       msg += `💰 Offer: ₹${price}/Month%0A`;
-       msg += `📞 Contact: ${ph}%0A`;
-       msg += `------------------%0A`;
-       if(loc.includes('http')) { msg += `📍 Location: ${loc}`; } 
-       else { msg += `📍 Location: I will share manually.`; }
-
-       window.open(`https://wa.me/${myPhone}?text=${msg}`, '_blank');
-       closeModal();
-   }
-</script>
-
-</body> </html>
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
